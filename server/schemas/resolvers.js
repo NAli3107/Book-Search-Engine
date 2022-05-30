@@ -41,5 +41,27 @@ const resolvers = {
 
       return { token, user };
     },
+    saveBook: async (parent, { books }, context) => {
+      if (context.user) {
+        const newBooks = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedBooks: books } },
+          { new: true }
+        );
+
+        return newBooks;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeBook: async (parent, { bookId }, context) => {
+      if (context.user) {
+        const removeBooks = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedBooks: { bookId } } },
+          { new: true }
+        );
+        return removeBooks;
+      }
+    },
   },
 };
