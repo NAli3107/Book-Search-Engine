@@ -36,15 +36,15 @@ const resolvers = {
       }
 
       const token = signToken(user);
-      console.log(token, user);
+      console.log('from login', token, user);
       return { token, user };
     },
-    saveBook: async (parent, { book }, context) => {
-      console.log(book, context.user, "from saveBook in resolver");
+    saveBook: async (parent, { bookInfo }, context) => {
+      console.log(bookInfo, context.user, "from saveBook in resolver");
       if (context.user) {
         const newBooks = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedBooks: book } },
+          { $addToSet: { savedBooks: bookInfo } },
           { new: true }
         );
 

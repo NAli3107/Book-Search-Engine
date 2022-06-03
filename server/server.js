@@ -11,6 +11,11 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+  formatError(err) {
+    if (err.originalError instanceof AuthenticationError) {
+      return new Error('Different authentication error message!');
+    }
+  },
 });
 
 app.use(express.urlencoded({ extended: true }));
