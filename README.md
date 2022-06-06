@@ -4,7 +4,7 @@
 
 - [Description](#description)
 - [Installation](#installation)
-- [Book Search Engine Example](#examples)
+- [Example](#examples)
 - [Contact Information](#contact)
 
 ## Description
@@ -23,7 +23,11 @@ This application is a book search engine with GraphQL API and Apollo Server. The
 
 ## Examples
 
-README Generator GIF:
+
+Visit the deployed app on heroku : [Book Search Engine](https://salty-fjord-54369.herokuapp.com/)
+
+<br>
+Book Search Engine GIF:
 
 <img src="client\src\images\GIF.gif">
 
